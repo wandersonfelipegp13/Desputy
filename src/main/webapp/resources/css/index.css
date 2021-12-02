@@ -1,0 +1,127 @@
+.container {
+    padding: 0 35px;
+}
+
+#bg-brasil {
+    background-image: url("../img/bg-brasil.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left top;
+    background-size: 80%;
+}
+
+#brand {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#brand img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#brand span {
+    font-weight: 700;
+    color: #37474F;
+    font-size: 24px;
+}
+
+#brand span span {
+    color: #EF474F;
+}
+
+#description {
+    margin-top: 100px;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+#btn-entrar {
+    font-family: 'Ubuntu';
+    font-size: 24px;
+    font-weight: 400;
+
+    margin-top: 100px;
+    width: 100%;
+    padding: 15px;
+
+    cursor: pointer;
+    transition: .4s;
+}
+
+#btn-entrar:hover {
+    background-color: #FA565E;
+}
+
+/* Tablets */
+@media screen and (min-width: 768px) {
+    .container {
+        padding: 0 60px;
+    }
+
+    #brand {
+        margin-top: 20px;
+    }
+
+    #brand img {
+        width: 56px;
+        height: 56px;
+    }
+
+    #brand span {
+        font-size: 26px;
+    }
+
+    #description {
+        margin-top: 200px;
+        font-size: 48px;
+    }
+
+    #btn-entrar {
+        font-size: 32px;
+        
+        margin-top: 200px;
+        width: 60%;
+        padding: 20px;
+    }
+}
+
+/* Notbooks */
+@media screen and (min-width: 1280px) {
+    .container {
+        padding: 0 100px;
+    }
+
+    #bg-brasil {
+        background-image: url("../img/bg-desktop.svg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: right center;
+        background-size: 40%;
+        background-position-x: 96%;
+    }
+
+    #brand {
+        margin-top: 40px;
+    }
+
+    #brand span {
+        font-size: 36px;
+    }
+
+    #description {
+        width: 50%;
+        margin-top: 120px;
+    }
+
+    #btn-entrar {
+        font-size: 32px;
+        
+        margin-top: 120px;
+        width: 30%;
+        padding: 20px;
+    }
+}

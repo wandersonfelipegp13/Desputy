@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title> Desputy </title>
+	<link rel="icon" href="resources/img/logo.png" />
+	<link rel="stylesheet" href="resources/css/style.css" />
+	<link rel="stylesheet" href="resources/css/index.css" />
+    <link rel="icon" href="resources/img/logo.png" />
+
+    <!-- Fontes e APIs Google -->
+    <!--
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> 
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap;" rel="stylesheet" />
+    -->
+</h:head>
+<h:body id="bg-brasil">
+
+	<h1> Desputy </h1>
+	<h:form>
+		<h:commandLink action="#{usuarioBean.novo}">Novo usuário</h:commandLink>
+		<br />
+		<h:outputLink value="publico/login.jsf">Entrar</h:outputLink>
+	</h:form>
+
+</h:body>
+</html>

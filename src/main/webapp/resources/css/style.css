@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #EEE;
+    font-family: 'Ubuntu';
+    color: #171E21;
+}
+
+.red {
+    background-color: #EF474F;
+    color: #FFF;
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.container {
+    max-width: 1300px;
+    margin: auto;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color:#FA565E;
+    border-radius: 3px;
+}
+
+::selection {
+    background:#FA565E;
+    color: #FFF;
+}
