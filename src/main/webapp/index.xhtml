@@ -13,20 +13,33 @@
     <link rel="icon" href="resources/img/logo.png" />
 
     <!-- Fontes e APIs Google -->
-    <!--
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> 
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap;" rel="stylesheet" />
-    -->
+    <!--<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700" rel="stylesheet" />
+    
 </h:head>
 <h:body id="bg-brasil">
+	
+	<header class="container">	
+		<div id="brand">
+            <img alt="Desputy" src="resources/img/logo.png" />
+            <span>D<span>e</span>sputy</span>
+        </div>
+    </header>
+    
+    <section class="container">
+    	
+    	<div id="description">Veja informações sobre deputados aqui.</div>
+    	
+    	<div id="btn-entrar" class="btn red">
+    		<h:form style="text-align: center;">
+				<h:outputLink value="publico/login.jsf" style="text-decoration: none; color: white;">
+					Entrar
+				</h:outputLink>
+			</h:form>
+		</div>
 
-	<h1> Desputy </h1>
-	<h:form>
-		<h:commandLink action="#{usuarioBean.novo}">Novo usuário</h:commandLink>
-		<br />
-		<h:outputLink value="publico/login.jsf">Entrar</h:outputLink>
-	</h:form>
+ 	</section>
 
 </h:body>
 </html>
