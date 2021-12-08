@@ -11,6 +11,7 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 
 		<mapping class="br.com.ifgoiano.desputy.usuario.Usuario"/>
+		<mapping class="br.com.ifgoiano.desputy.deputado.Deputado"/>
 
 	</session-factory>
 </hibernate-configuration>

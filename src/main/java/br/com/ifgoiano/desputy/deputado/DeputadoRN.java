@@ -2,6 +2,7 @@ package br.com.ifgoiano.desputy.deputado;
 
 import java.util.List;
 
+import br.com.ifgoiano.desputy.usuario.Usuario;
 import br.com.ifgoiano.desputy.util.DAOFactory;
 
 public class DeputadoRN {
@@ -31,6 +32,10 @@ public class DeputadoRN {
 
 	public List<Deputado> listar() {
 		return this.deputadoDAO.listar();
+	}
+	
+	public List<Deputado> listarPorUsuario(Usuario usuario) {
+		return this.deputadoDAO.listarPorUsuario(usuario);
 	}
 	
 }

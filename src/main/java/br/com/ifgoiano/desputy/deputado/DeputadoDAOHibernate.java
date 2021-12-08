@@ -2,7 +2,11 @@ package br.com.ifgoiano.desputy.deputado;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+
+import br.com.ifgoiano.desputy.usuario.Usuario;
 
 public class DeputadoDAOHibernate implements DeputadoDAO {
 	
@@ -30,6 +34,13 @@ public class DeputadoDAOHibernate implements DeputadoDAO {
 
 	public List<Deputado> listar() {
 		return this.session.createCriteria(Deputado.class).list();
+	}
+
+	@Override
+	public List<Deputado> listarPorUsuario(Usuario usuario) {
+		Criteria criteria = this.session.createCriteria(Deputado.class);
+		criteria.add(Restrictions.eq("usuario", usuario));
+		return criteria.list();
 	}
 
 	
