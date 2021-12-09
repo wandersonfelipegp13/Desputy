@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/templates/interna.xhtml">
+	<ui:define name="titulo">
+		Cadastro de Deputados
+	</ui:define>
+	<ui:define name="corpo">
+		<h:form id="edicao">
+			<h:messages />
+			<h:inputHidden value="#{deputadoBean.selecionada.id}" />
+			<h:panelGrid columns="2">
+				
+				<h:outputLabel value="Nome: " for="nome" />
+				<h:inputText id="nome"
+					value="#{deputadoBean.selecionada.nome}" required="true"
+					maxlength="45" />
+
+				<h:commandButton value="Salvar" action="#{deputadoBean.salvar}">
+					<f:ajax execute="@form" render=":edicao :listagem" />
+				</h:commandButton>
+				
+			</h:panelGrid>
+		</h:form>
+		<h:form id="listagem">
+			<h:dataTable value="#{deputadoBean.lista}" var="deputado"
+				rendered="#{not empty deputadoBean.lista}">
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					#{deputado.nome}
+				</h:column>
+				<h:column>
+					<h:commandLink>
+						<f:ajax execute="@this" render=":edicao" />
+						<h:graphicImage library="imagens" name="editar16.png" />
+						<f:setPropertyActionListener target="#{deputadoBean.selecionada}"
+							value="#{deputado}" />
+					</h:commandLink>
+				</h:column>
+				<h:column>
+					<h:commandLink action="#{deputadoBean.excluir}">
+						<f:ajax execute="@this" render=":listagem" />
+						<h:graphicImage library="imagens" name="excluir16.png" />
+						<f:setPropertyActionListener target="#{deputadoBean.selecionada}"
+							value="#{deputado}" />
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+

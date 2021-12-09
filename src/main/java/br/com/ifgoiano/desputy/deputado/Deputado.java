@@ -1,6 +1,7 @@
 package br.com.ifgoiano.desputy.deputado;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -191,5 +192,30 @@ public class Deputado implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cpf, dataFalecimento, dataNascimento, id, idLegislaturaFinal, idLegislaturaInicial,
+				municipioNascimento, nome, nomeCivil, siglaSexo, ufNascimento, uri, usuario);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Deputado other = (Deputado) obj;
+		return Objects.equals(cpf, other.cpf) && Objects.equals(dataFalecimento, other.dataFalecimento)
+				&& Objects.equals(dataNascimento, other.dataNascimento) && id == other.id
+				&& idLegislaturaFinal == other.idLegislaturaFinal && idLegislaturaInicial == other.idLegislaturaInicial
+				&& Objects.equals(municipioNascimento, other.municipioNascimento) && Objects.equals(nome, other.nome)
+				&& Objects.equals(nomeCivil, other.nomeCivil) && Objects.equals(siglaSexo, other.siglaSexo)
+				&& Objects.equals(ufNascimento, other.ufNascimento) && Objects.equals(uri, other.uri)
+				&& Objects.equals(usuario, other.usuario);
+	}
+	
 	
 }
