@@ -17,6 +17,56 @@
 				<h:inputText id="nome"
 					value="#{deputadoBean.selecionada.nome}" required="true"
 					maxlength="45" />
+					
+				<h:outputLabel value="Nome Civil: " for="nomecivil" />
+				<h:inputText id="nomecivil"
+					value="#{deputadoBean.selecionada.nomeCivil}" required="true"
+					maxlength="45" />
+					
+				<h:outputLabel value="CPF: " for="cpf" />
+				<h:inputText id="cpf"
+					value="#{deputadoBean.selecionada.cpf}" required="true"
+					maxlength="45" />
+					
+				<h:outputLabel value="URI: " for="uri" />
+				<h:inputText id="uri"
+					value="#{deputadoBean.selecionada.uri}" required="true"
+					maxlength="45" />
+					
+				<h:outputLabel value="Data Nascimento: " for="datanasc" />
+				<h:inputText id="datanasc"
+					value="#{deputadoBean.selecionada.dataNascimento}" required="true"
+					maxlength="45" />
+
+				<h:outputLabel value="Data Falecimento: " for="datafale" />
+				<h:inputText id="datafale"
+					value="#{deputadoBean.selecionada.dataFalecimento}" required="true"
+					maxlength="45" />
+					
+				<h:outputLabel value="ID Legislatura Inicial: " for="legisini" />
+				<h:inputText id="legisini"
+					value="#{deputadoBean.selecionada.idLegislaturaInicial}" required="true"
+					maxlength="45" />
+					
+				<h:outputLabel value="ID Legislatura Final: " for="legisfin" />
+				<h:inputText id="legisfin"
+					value="#{deputadoBean.selecionada.idLegislaturaFinal}" required="true"
+					maxlength="45" />
+					
+				<h:outputLabel value="UF Nascimento: " for="uf" />
+				<h:inputText id="uf"
+					value="#{deputadoBean.selecionada.ufNascimento}" required="true"
+					maxlength="45" />
+				
+				<h:outputLabel value="Município Nascimento: " for="municipio" />
+				<h:inputText id="municipio"
+					value="#{deputadoBean.selecionada.municipioNascimento}" required="true"
+					maxlength="45" />
+					
+				<h:outputLabel value="Sigla Sexo: " for="sexo" />
+				<h:inputText id="sexo"
+					value="#{deputadoBean.selecionada.siglaSexo}" required="true"
+					maxlength="45" />
 
 				<h:commandButton value="Salvar" action="#{deputadoBean.salvar}">
 					<f:ajax execute="@form" render=":edicao :listagem" />
@@ -30,6 +80,46 @@
 				<h:column>
 					<f:facet name="header">Nome</f:facet>
 					#{deputado.nome}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome Civil</f:facet>
+					#{deputado.nomeCivil}
+				</h:column>
+				<h:column>
+					<f:facet name="header">CPF</f:facet>
+					#{deputado.cpf}
+				</h:column>
+				<h:column>
+					<f:facet name="header">URI</f:facet>
+					#{deputado.uri}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Data Nascimento</f:facet>
+					#{deputado.dataNascimento}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Data Falecimento</f:facet>
+					#{deputado.dataFalecimento}
+				</h:column>
+				<h:column>
+					<f:facet name="header">ID Legislatura Inicial</f:facet>
+					#{deputado.idLegislaturaInicial}
+				</h:column>
+				<h:column>
+					<f:facet name="header">ID Legislatura Final</f:facet>
+					#{deputado.idLegislaturaFinal}
+				</h:column>
+				<h:column>
+					<f:facet name="header">UF Nascimento</f:facet>
+					#{deputado.ufNascimento}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Município Nascimento</f:facet>
+					#{deputado.municipioNascimento}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Sexo</f:facet>
+					#{deputado.siglaSexo}
 				</h:column>
 				<h:column>
 					<h:commandLink>
