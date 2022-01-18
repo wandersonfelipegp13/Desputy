@@ -32,16 +32,17 @@ public class DeputadoDAOHibernate implements DeputadoDAO {
 		return (Deputado) this.session.get(Deputado.class, codigo);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Deputado> listar() {
 		return this.session.createCriteria(Deputado.class).list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Deputado> listarPorUsuario(Usuario usuario) {
 		Criteria criteria = this.session.createCriteria(Deputado.class);
 		criteria.add(Restrictions.eq("usuario", usuario));
 		return criteria.list();
 	}
-
 	
 }
