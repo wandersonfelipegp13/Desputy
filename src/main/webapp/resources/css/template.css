@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+
+.barra {
+	display: flex;
+	align-items: center;
+	margin-top: 15px;
+}
+
+#brand span {
+    font-weight: 700;
+    color: #37474F;
+    font-size: 24px;
+}
+
+#voltar {
+	margin-left: auto;
+}
+
+#voltar a {
+	color: #EF474F;
+}
+

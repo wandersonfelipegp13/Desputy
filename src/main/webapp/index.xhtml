@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 	<meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title> Desputy </title>
-	<link rel="icon" href="resources/img/logo.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titulo"> Desputy </ui:insert></title>
+	
+	<!--
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="index.css" />
+	-->
+	
 	<link rel="stylesheet" href="resources/css/style.css" />
 	<link rel="stylesheet" href="resources/css/index.css" />
+	 
     <link rel="icon" href="resources/img/logo.png" />
 
     <!-- Fontes e APIs Google -->
@@ -21,9 +29,9 @@
 <h:body id="bg-brasil">
 	
 	<header class="container">	
-		<div id="brand">
-            <img alt="Desputy" src="resources/img/logo.png" />
-            <span>D<span>e</span>sputy</span>
+		<div id="brand">  
+            <h:graphicImage library="img" name="logo.png" />
+            <span unselectable="on">D<span>e</span>sputy</span>
         </div>
     </header>
     

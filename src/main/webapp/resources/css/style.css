@@ -43,3 +43,28 @@ body {
     background:#FA565E;
     color: #FFF;
 }
+
+/* logotipo */
+
+#brand {
+    display: flex;
+    align-items: center;
+}
+
+#brand img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#brand span {
+    font-weight: 700;
+    color: #37474F;
+    font-size: 24px;
+    user-select: none;
+}
+
+#brand span span {
+    color: #EF474F;
+}

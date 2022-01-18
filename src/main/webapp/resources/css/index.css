@@ -4,6 +4,10 @@
 
 #bg-brasil {
     background-image: url("../img/bg-brasil.png");
+    
+    /*background-image: url("#{resource['img:bg-brasil.png']}");*/
+    /*background-image: url("#{resource['primefaces-start:img:bg-brasil.png']}");*/
+     
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: left top;
@@ -11,26 +15,7 @@
 }
 
 #brand {
-    display: flex;
-    align-items: center;
     margin-top: 15px;
-}
-
-#brand img {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-#brand span {
-    font-weight: 700;
-    color: #37474F;
-    font-size: 24px;
-}
-
-#brand span span {
-    color: #EF474F;
 }
 
 #description {
@@ -61,7 +46,7 @@
     .container {
         padding: 0 60px;
     }
-
+    
     #brand {
         margin-top: 20px;
     }
@@ -76,14 +61,14 @@
     }
 
     #description {
-        margin-top: 200px;
+        margin-top: 100px;
         font-size: 48px;
     }
 
     #btn-entrar {
         font-size: 32px;
         
-        margin-top: 200px;
+        margin-top: 100px;
         width: 60%;
         padding: 20px;
     }

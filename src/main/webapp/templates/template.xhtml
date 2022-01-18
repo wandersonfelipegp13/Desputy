@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titulo"> Desputy </ui:insert></title>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="template.css" />
+	<link rel="icon" href="../resources/img/logo.png" />
+	
+	<!-- Fontes e APIs Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!--<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700" rel="stylesheet" />
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round" rel="stylesheet"/>
+</h:head>
+<h:body>
+
+	<div class="container">
+		
+		<div class="barra">
+		
+			<div id="brand">
+				<h:graphicImage library="img" name="logo.png" />
+	            <span unselectable="on">D<span>e</span>sputy</span>
+			</div>
+			
+			<div id="barra_menu">
+				<ui:insert name="barra_menu">
+					<ui:include src="/restrito/menu_sistema.xhtml" />
+				</ui:insert>
+			</div>
+			
+			<div id="voltar">
+				<ui:insert name="link-voltar"> Voltar </ui:insert>
+			</div>
+			
+		</div>
+		
+		<div id="corpo">
+			<ui:insert name="corpo" />
+		</div>
+	</div>	
+</h:body>
+</html>
