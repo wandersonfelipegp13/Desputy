@@ -12,6 +12,7 @@
 
 		<mapping class="br.com.ifgoiano.desputy.usuario.Usuario"/>
 		<mapping class="br.com.ifgoiano.desputy.deputado.Deputado"/>
+		<mapping class="br.com.ifgoiano.desputy.legislatura.Legislatura"/>
 
 	</session-factory>
 </hibernate-configuration>

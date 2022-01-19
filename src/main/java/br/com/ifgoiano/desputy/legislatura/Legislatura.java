@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,8 +44,7 @@ public class Legislatura implements Serializable {
 
 	@ManyToOne
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(nullable = false)
-	@Column(name = "usuario")
+	@JoinColumn(name = "usuario", foreignKey = @ForeignKey(name = "fk_legislatura_usuario"))
 	private Usuario usuario;
 
 	public int getIdLegislatura() {
