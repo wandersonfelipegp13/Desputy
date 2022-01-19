@@ -14,7 +14,7 @@ import br.com.ifgoiano.desputy.usuario.UsuarioRN;
 @SessionScoped
 public class ContextoBean implements Serializable {
 
-	private static final long serialVersionUID = -2071855184464371947L;
+	private static final long serialVersionUID = 1;
 
 	public Usuario getUsuarioLogado() {
 		FacesContext context = FacesContext.getCurrentInstance();

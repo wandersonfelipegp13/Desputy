@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/templates/interna.xhtml">
+	<ui:define name="titulo">
+		Cadastro de Legislatura
+	</ui:define>
+	<ui:define name="corpo">
+		<h:form id="edicao">
+			<h:messages />
+			<h:inputHidden value="#{legislaturaBean.selecionada.idLegislatura}" />
+			<h:panelGrid columns="2">
+				
+				<h:outputLabel value="URI: " for="uri" />
+				<h:inputText id="uri"
+					value="#{legislaturaBean.selecionada.uri}" required="true"
+					maxlength="255" />	
+				 
+				<!--  
+				<h:outputLabel value="Data de Início: " for="datainicio" />
+				<h:inputText id="datainicio"
+					value="#{legislaturaBean.selecionada.dataInicio}" required="true"
+					maxlength="45">
+					<f:convertDateTime dateStyle="medium" pattern="dd/mm/yyyy" /> 
+				</h:inputText>	
+				-->
+				
+				<h:outputLabel value="Data de Início " for="datainicio" />
+				<h:inputText id="datainicio"
+					value="#{legislaturaBean.selecionada.dataInicio}" required="true"
+					maxlength="45" />
+				
+				<h:outputLabel value="Data de Fim: " for="datafim" />
+				<h:inputText id="datafim"
+					value="#{legislaturaBean.selecionada.dataFim}" required="true"
+					maxlength="45" />
+					
+				<h:outputLabel value="Ano da Eleição: " for="ano" />
+				<h:inputText id="ano"
+					value="#{legislaturaBean.selecionada.anoEleicao}" required="true"
+					maxlength="4" />
+							
+				<h:commandButton value="Salvar" action="#{legislaturaBean.salvar}">
+					<f:ajax execute="@form" render=":edicao :listagem" />
+				</h:commandButton>
+				
+			</h:panelGrid>
+		</h:form>
+		<h:form id="listagem">
+			<h:dataTable value="#{legislaturaBean.lista}" var="legislatura"
+				rendered="#{not empty legislaturaBean.lista}">
+				<h:column>
+					<f:facet name="header">URI</f:facet>
+					#{legislatura.uri}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Data de Início</f:facet>
+					#{legislatura.dataInicio}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Data de Fim</f:facet>
+					#{legislatura.dataFim}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Ano da Eleição</f:facet>
+					#{legislatura.anoEleicao}
+				</h:column>
+				<h:column>
+					<h:commandLink>
+						<f:ajax execute="@this" render=":edicao" />
+						<h:graphicImage library="imagens" name="editar16.png" />
+						<f:setPropertyActionListener target="#{legislaturaBean.selecionada}"
+							value="#{legislatura}" />
+					</h:commandLink>
+				</h:column>
+				<h:column>
+					<h:commandLink action="#{legislaturaBean.excluir}">
+						<f:ajax execute="@this" render=":listagem" />
+						<h:graphicImage library="imagens" name="excluir16.png" />
+						<f:setPropertyActionListener target="#{legislaturaBean.selecionada}"
+							value="#{legislatura}" />
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

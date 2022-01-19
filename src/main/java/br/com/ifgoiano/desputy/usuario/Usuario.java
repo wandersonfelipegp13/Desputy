@@ -21,7 +21,7 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer codigo;
-
+	
 	@Column
 	private String nome;
 
