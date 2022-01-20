@@ -2,20 +2,20 @@ package br.com.ifgoiano.desputy.web;
 
 import java.util.List;
 
-// import javax.annotation.ManagedBean;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 import br.com.ifgoiano.desputy.legislatura.Legislatura;
 import br.com.ifgoiano.desputy.legislatura.LegislaturaRN;
 
-@javax.faces.bean.ManagedBean(name = "legislaturaBean")
+@ManagedBean(name = "legislaturaBean")
 @RequestScoped
 public class LegislaturaBean {
 
 	private Legislatura selecionada = new Legislatura();
 	private List<Legislatura> lista = null;
-	@ManagedProperty(value = "#contextoBean")
+	@ManagedProperty(value = "#{contextoBean}")
 	private ContextoBean contextoBean;
 	
 	public String salvar() {

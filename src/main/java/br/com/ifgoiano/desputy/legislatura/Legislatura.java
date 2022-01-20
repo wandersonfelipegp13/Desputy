@@ -1,7 +1,7 @@
 package br.com.ifgoiano.desputy.legislatura;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -34,7 +34,7 @@ public class Legislatura implements Serializable {
 	private String uri;
 
 	@Column(name = "datainicio")
-	private String dataInicio;
+	private Date dataInicio;
 
 	@Column(name = "datafim")
 	private Date dataFim;
@@ -63,11 +63,11 @@ public class Legislatura implements Serializable {
 		this.uri = uri;
 	}
 
-	public String getDataInicio() {
+	public Date getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setDataInicio(String dataInicio) {
+	public void setDataInicio(Date dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
