@@ -39,8 +39,17 @@ public class DeputadoBean {
 		 * Um controle, para que apenas os 5 estados com mais deputados sejam exibidos.
 		 */
 		for (int i = 0; i < 5; i++) {
+			
+			EstadoDeputado dep;
+			
+			try {
+				dep = deps.get(i);
+			} catch (Exception e) {
+				break;
+			}
+			
 			ChartSeries deputadoseries = new ChartSeries();
-			EstadoDeputado dep = deps.get(i);
+			
 			deputadoseries.setLabel(dep.getUfnascimento());
 			deputadoseries.set(dep.getUfnascimento(), dep.getDeputados());
 			this.deputadosBarra.addSeries(deputadoseries);
