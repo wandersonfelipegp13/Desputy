@@ -18,4 +18,9 @@ public interface DeputadoDAO {
 	
 	public List<Deputado> listarPorUsuario(Usuario usuario);
 	
+	public List<Deputado> listarPorEstado(String estado);
+	
+	public List<EstadoDeputado> listarEstadosPopulosos();
+	
+	
 }

@@ -6,8 +6,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
+
 import br.com.ifgoiano.desputy.deputado.Deputado;
 import br.com.ifgoiano.desputy.deputado.DeputadoRN;
+import br.com.ifgoiano.desputy.deputado.EstadoDeputado;
 
 @ManagedBean
 @RequestScoped
@@ -17,6 +23,45 @@ public class DeputadoBean {
 	private List<Deputado> lista = null;
 	@ManagedProperty(value = "#{contextoBean}")
 	private ContextoBean contextoBean;
+	
+	/**
+	 * Representa o gráfico de barras
+	 */
+	private BarChartModel deputadosBarra;
+
+	public DeputadoBean() {
+		
+		this.deputadosBarra = new BarChartModel();
+		
+		List<EstadoDeputado> deps = new DeputadoRN().listarEstadosPopulosos();
+		
+		/**
+		 * Um controle, para que apenas os 5 estados com mais deputados sejam exibidos.
+		 */
+		for (int i = 0; i < 5; i++) {
+			ChartSeries deputadoseries = new ChartSeries();
+			EstadoDeputado dep = deps.get(i);
+			deputadoseries.setLabel(dep.getUfnascimento());
+			deputadoseries.set(dep.getUfnascimento(), dep.getDeputados());
+			this.deputadosBarra.addSeries(deputadoseries);
+		}
+		
+		this.deputadosBarra.setTitle("Grafico dos Deputados do país por estado");
+		this.deputadosBarra.setLegendPosition("w");
+
+		Axis xAxis = this.deputadosBarra.getAxis(AxisType.X);
+		xAxis.setLabel("Estado");
+
+		Axis yAxis = this.deputadosBarra.getAxis(AxisType.Y);
+		yAxis.setLabel("Deputados");
+		// yAxis.setMin(0);
+		// yAxis.setMax(48000000);
+		
+	}
+	
+	public BarChartModel getDeputadoColunas() {
+		return this.deputadosBarra;
+	}
 
 	public String salvar() {
 		this.selecionada.setUsuario(this.contextoBean.getUsuarioLogado());

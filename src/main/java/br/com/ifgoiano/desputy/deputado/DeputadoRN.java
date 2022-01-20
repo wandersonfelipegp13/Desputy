@@ -38,4 +38,12 @@ public class DeputadoRN {
 		return this.deputadoDAO.listarPorUsuario(usuario);
 	}
 	
+	public List<Deputado> listarPorEstado(String estado) {
+		return this.deputadoDAO.listarPorEstado(estado);
+	}
+	
+	public List<EstadoDeputado> listarEstadosPopulosos() {
+		return this.deputadoDAO.listarEstadosPopulosos();
+	}
+	
 }
