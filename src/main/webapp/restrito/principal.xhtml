@@ -8,7 +8,12 @@
 	<ui:define name="corpo">
 		Usuário logado #{request.remoteUser}
 		
-		<p:chart type="bar" model="#{deputadoBean.deputadoColunas}" style="width:50%;height:300px"/>
+		<div style="
+			display: flex;
+		">
+			<p:chart type="bar" model="#{deputadoBean.deputadoColunas}" style="width:45%;height:300px"/>
+			<p:chart type="pie" model="#{deputadoBean.deputadosPizza}" style="width:45%;height:300px"/>
+	 	</div>
 	 	
 	</ui:define>
 </ui:composition>

@@ -10,6 +10,7 @@ import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.PieChartModel;
 
 import br.com.ifgoiano.desputy.deputado.Deputado;
 import br.com.ifgoiano.desputy.deputado.DeputadoRN;
@@ -28,10 +29,16 @@ public class DeputadoBean {
 	 * Representa o gráfico de barras
 	 */
 	private BarChartModel deputadosBarra;
+	
+	/**
+	 * Representa o gráfico de pizza
+	 */
+	private PieChartModel deputadosPizza;
 
 	public DeputadoBean() {
 		
 		this.deputadosBarra = new BarChartModel();
+		this.deputadosPizza = new PieChartModel();
 		
 		List<EstadoDeputado> deps = new DeputadoRN().listarEstadosPopulosos();
 		
@@ -53,8 +60,11 @@ public class DeputadoBean {
 			deputadoseries.setLabel(dep.getUfnascimento());
 			deputadoseries.set(dep.getUfnascimento(), dep.getDeputados());
 			this.deputadosBarra.addSeries(deputadoseries);
+			
+			this.deputadosPizza.set(dep.getUfnascimento(), dep.getDeputados());
 		}
 		
+		// Configuração do gráfico de barras
 		this.deputadosBarra.setTitle("Grafico dos Deputados do país por estado");
 		this.deputadosBarra.setLegendPosition("w");
 
@@ -66,10 +76,20 @@ public class DeputadoBean {
 		// yAxis.setMin(0);
 		// yAxis.setMax(48000000);
 		
+		// Configuração gráfico de Pizza
+		this.deputadosPizza.setTitle("Gráfico de deputados por estado");
+		this.deputadosPizza.setLegendPosition("e");
+		this.deputadosPizza.setShowDataLabels(true);
+		this.deputadosPizza.setDataFormat("percent");
+		
 	}
 	
 	public BarChartModel getDeputadoColunas() {
 		return this.deputadosBarra;
+	}
+	
+	public PieChartModel getDeputadosPizza() {
+		return this.deputadosPizza;
 	}
 
 	public String salvar() {
