@@ -1,5 +1,6 @@
 package br.com.ifgoiano.desputy.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -19,56 +20,56 @@ import br.com.ifgoiano.desputy.deputado.EstadoDeputado;
 @ManagedBean
 @RequestScoped
 public class DeputadoBean {
-	
+
 	private String nome;
 	private String siglaSexo;
 	private String ufNascimento;
 	private List<Deputado> listaResultadoBusca;
-	
+
 	private Deputado selecionada = new Deputado();
 	private List<Deputado> lista = null;
 	@ManagedProperty(value = "#{contextoBean}")
 	private ContextoBean contextoBean;
-	
+
 	/**
 	 * Representa o gráfico de barras
 	 */
 	private BarChartModel deputadosBarra;
-	
+
 	/**
 	 * Representa o gráfico de pizza
 	 */
 	private PieChartModel deputadosPizza;
 
 	public DeputadoBean() {
-		
+
 		this.deputadosBarra = new BarChartModel();
 		this.deputadosPizza = new PieChartModel();
-		
+
 		List<EstadoDeputado> deps = new DeputadoRN().listarEstadosPopulosos();
-		
+
 		/**
 		 * Um controle, para que apenas os 5 estados com mais deputados sejam exibidos.
 		 */
 		for (int i = 0; i < 5; i++) {
-			
+
 			EstadoDeputado dep;
-			
+
 			try {
 				dep = deps.get(i);
 			} catch (Exception e) {
 				break;
 			}
-			
+
 			ChartSeries deputadoseries = new ChartSeries();
-			
+
 			deputadoseries.setLabel(dep.getUfnascimento());
 			deputadoseries.set(dep.getUfnascimento(), dep.getDeputados());
 			this.deputadosBarra.addSeries(deputadoseries);
-			
+
 			this.deputadosPizza.set(dep.getUfnascimento(), dep.getDeputados());
 		}
-		
+
 		// Configuração do gráfico de barras
 		this.deputadosBarra.setTitle("Grafico dos Deputados do país por estado");
 		this.deputadosBarra.setLegendPosition("w");
@@ -80,19 +81,19 @@ public class DeputadoBean {
 		yAxis.setLabel("Deputados");
 		// yAxis.setMin(0);
 		// yAxis.setMax(48000000);
-		
+
 		// Configuração gráfico de Pizza
 		this.deputadosPizza.setTitle("Gráfico de deputados por estado");
 		this.deputadosPizza.setLegendPosition("e");
 		this.deputadosPizza.setShowDataLabels(true);
 		this.deputadosPizza.setDataFormat("percent");
-		
+
 	}
-	
+
 	public BarChartModel getDeputadoColunas() {
 		return this.deputadosBarra;
 	}
-	
+
 	public PieChartModel getDeputadosPizza() {
 		return this.deputadosPizza;
 	}
@@ -142,9 +143,9 @@ public class DeputadoBean {
 	public void setContextoBean(ContextoBean contextoBean) {
 		this.contextoBean = contextoBean;
 	}
-	
-	// 
-	
+
+	//
+
 	public String getNome() {
 		return nome;
 	}
@@ -176,18 +177,88 @@ public class DeputadoBean {
 	public void setListaResultadoBusca(List<Deputado> listaResultadoBusca) {
 		this.listaResultadoBusca = listaResultadoBusca;
 	}
-	
+
 	//
-	
+	/**
+	 * Método para listar todos os UFs.
+	 * 
+	 * @return Uma lista com todos os UFs.
+	 */
 	public List<String> getUf() {
 		DeputadoRN depRN = new DeputadoRN();
 		return depRN.listarUF();
 	}
-	
+
+	/**
+	 * Método para a busca, com filtros, de deputados. TODO Mudar equals por
+	 * contains em nome.
+	 * 
+	 * @return Retorna uma lista de Deputado.
+	 */
 	public List<Deputado> busca() {
-		return this.listar();
+		this.listaResultadoBusca = this.listar();
+		List<Deputado> aux = new ArrayList<Deputado>();
+
+		// Se todos os filtros forem passados
+		if (!this.nome.isEmpty() && !this.ufNascimento.isEmpty() && !this.siglaSexo.isEmpty()) {
+			for (Deputado d : listaResultadoBusca)
+				if (d.getNome().equals(this.nome) && d.getSiglaSexo().equals(this.siglaSexo)
+						&& d.getUfNascimento().equals(this.ufNascimento))
+					aux.add(d);
+			listaResultadoBusca = aux;
+		}
+
+		// Se a sigla do sexo não for passada
+		if (!this.nome.isEmpty() && !this.ufNascimento.isEmpty() && this.siglaSexo.isEmpty()) {
+			for (Deputado d : listaResultadoBusca)
+				if (d.getNome().equals(this.nome) && d.getUfNascimento().equals(this.ufNascimento))
+					aux.add(d);
+			listaResultadoBusca = aux;
+		}
+
+		// Se o UF de nascimento não for passado
+		if (!this.nome.isEmpty() && this.ufNascimento.isEmpty() && !this.siglaSexo.isEmpty()) {
+			for (Deputado d : listaResultadoBusca)
+				if (d.getNome().equals(this.nome) && d.getSiglaSexo().equals(this.siglaSexo))
+					aux.add(d);
+			listaResultadoBusca = aux;
+		}
+
+		// Se o nome não for passado
+		if (this.nome.isEmpty() && !this.ufNascimento.isEmpty() && !this.siglaSexo.isEmpty()) {
+			for (Deputado d : listaResultadoBusca)
+				if (d.getSiglaSexo().equals(this.siglaSexo) && d.getUfNascimento().equals(this.ufNascimento))
+					aux.add(d);
+			listaResultadoBusca = aux;
+		}
+
+		// Se o sexo e o UF não forem passados
+		if (!this.nome.isEmpty() && this.ufNascimento.isEmpty() && this.siglaSexo.isEmpty()) {
+			for (Deputado d : listaResultadoBusca)
+				if (d.getNome().equals(this.nome))
+					aux.add(d);
+			listaResultadoBusca = aux;
+		}
+
+		// Se o sexo e o nome não forem passados
+		if (this.nome.isEmpty() && !this.ufNascimento.isEmpty() && this.siglaSexo.isEmpty()) {
+			for (Deputado d : listaResultadoBusca)
+				if (d.getUfNascimento().equals(this.ufNascimento))
+					aux.add(d);
+			listaResultadoBusca = aux;
+		}
+
+		// Se o UF e o nome não forem passados
+		if (this.nome.isEmpty() && this.ufNascimento.isEmpty() && !this.siglaSexo.isEmpty()) {
+			for (Deputado d : listaResultadoBusca)
+				if (d.getSiglaSexo().equals(this.siglaSexo))
+					aux.add(d);
+			listaResultadoBusca = aux;
+		}
+
+		return listaResultadoBusca;
 	}
-	
+
 	/**
 	 * Método que lista todos os deputados cadastrados.
 	 * 
