@@ -6,9 +6,9 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
 <ui:composition template="/templates/externa.xhtml">
 	<ui:define name="corpo">
-	
-		<h3>Bem vindo(a) #{request.remoteUser}</h3>
-		
+
+		<h2>Bem vindo(a) #{request.remoteUser}</h2>
+
 		<div style="display: flex;">
 			<p:chart type="bar" model="#{deputadoBean.deputadoColunas}"
 				style="width:45%;height:300px" />
@@ -40,7 +40,8 @@
 
 		</h:form>
 
-		<h:dataTable value="#{deputadoBean.listaResultadoBusca}" var="deputado" style="margin-bottom: 10px;">
+		<h:dataTable value="#{deputadoBean.listaResultadoBusca}"
+			var="deputado" style="margin-bottom: 10px;">
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{deputado.nome}">
@@ -52,6 +53,10 @@
 				</h:outputText>
 			</h:column>
 		</h:dataTable>
+		
+		<h:form>
+			<h:commandButton value="Acesse o mapa de UFs." action="/restrito/mapa" />
+		</h:form>
 
 	</ui:define>
 </ui:composition>

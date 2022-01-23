@@ -40,13 +40,18 @@ public class DeputadoBean {
 	 * Representa o gráfico de pizza
 	 */
 	private PieChartModel deputadosPizza;
+	
+	/**
+	 * Representa o UFs e as quantidades de deputados relacionadas a cada um.
+	 */
+	List<EstadoDeputado> deps;
 
 	public DeputadoBean() {
 
 		this.deputadosBarra = new BarChartModel();
 		this.deputadosPizza = new PieChartModel();
 
-		List<EstadoDeputado> deps = new DeputadoRN().listarEstadosPopulosos();
+		deps = new DeputadoRN().listarEstadosPopulosos();
 
 		/**
 		 * Um controle, para que apenas os 5 estados com mais deputados sejam exibidos.
@@ -270,5 +275,15 @@ public class DeputadoBean {
 		this.listaResultadoBusca = depRN.listar();
 		return depRN.listar();
 	}
+	
+	public int deputadosPorUf(String uf) {
+		for(EstadoDeputado d : deps) {
+			if(d.getUfnascimento().equals(uf))
+				return d.getDeputados();
+				break;
+		}
+		return 0;
+	}
+	
 
 }
