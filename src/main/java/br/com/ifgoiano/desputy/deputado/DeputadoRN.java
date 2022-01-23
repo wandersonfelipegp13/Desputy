@@ -46,4 +46,7 @@ public class DeputadoRN {
 		return this.deputadoDAO.listarEstadosPopulosos();
 	}
 	
+	public List<String> listarUF() {
+		return this.deputadoDAO.listarUF();
+	}
 }

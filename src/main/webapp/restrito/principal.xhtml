@@ -6,15 +6,52 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
 <ui:composition template="/templates/externa.xhtml">
 	<ui:define name="corpo">
-		Usuário logado #{request.remoteUser}
+		Bem vindo(a) #{request.remoteUser}
 		
-		<div style="
-			display: flex;
-		">
-			<p:chart type="bar" model="#{deputadoBean.deputadoColunas}" style="width:45%;height:300px"/>
-			<p:chart type="pie" model="#{deputadoBean.deputadosPizza}" style="width:45%;height:300px"/>
-	 	</div>
-	 	
+		<div style="display: flex;">
+			<p:chart type="bar" model="#{deputadoBean.deputadoColunas}"
+				style="width:45%;height:300px" />
+			<p:chart type="pie" model="#{deputadoBean.deputadosPizza}"
+				style="width:45%;height:300px" />
+		</div>
+
+		<h:form>
+
+			<h:outputLabel value="Nome: " for="nome" />
+			<h:inputText id="nome" value="#{deputadoBean.nome}" maxlength="45"
+				style="width: 50%;" />
+
+			<p:selectOneMenu id="uf" value="#{deputadoBean.ufNascimento}"
+				style="width: 50%;">
+				<f:selectItem itemLabel="Selecione um estado" itemValue="" />
+				<f:selectItems value="#{deputadoBean.uf}" var="a" itemLabel="#{a}"
+					itemValue="#{a}" />
+			</p:selectOneMenu>
+
+			<p:selectOneRadio id="sexo" value="#{deputadoBean.siglaSexo}">
+				<f:selectItem itemValue="" itemLabel="Ambos" />
+				<f:selectItem itemValue="M" itemLabel="Masculino" />
+				<f:selectItem itemValue="F" itemLabel="Feminino" />
+			</p:selectOneRadio>
+
+			<h:commandButton value="Buscar Deputados"
+				action="#{deputadoBean.busca()}" />
+
+		</h:form>
+
+		<h:dataTable value="#{deputadoBean.listaResultadoBusca}" var="deputado">
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{deputado.nome}">
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nome Civil</f:facet>
+				<h:outputText value="#{deputado.nomeCivil}">
+				</h:outputText>
+			</h:column>
+		</h:dataTable>
+
 	</ui:define>
 </ui:composition>
 </html>

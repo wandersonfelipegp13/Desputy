@@ -22,5 +22,6 @@ public interface DeputadoDAO {
 	
 	public List<EstadoDeputado> listarEstadosPopulosos();
 	
+	public List<String> listarUF();
 	
 }

@@ -20,6 +20,11 @@ import br.com.ifgoiano.desputy.deputado.EstadoDeputado;
 @RequestScoped
 public class DeputadoBean {
 	
+	private String nome;
+	private String siglaSexo;
+	private String ufNascimento;
+	private List<Deputado> listaResultadoBusca;
+	
 	private Deputado selecionada = new Deputado();
 	private List<Deputado> lista = null;
 	@ManagedProperty(value = "#{contextoBean}")
@@ -136,6 +141,62 @@ public class DeputadoBean {
 
 	public void setContextoBean(ContextoBean contextoBean) {
 		this.contextoBean = contextoBean;
+	}
+	
+	// 
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getSiglaSexo() {
+		return siglaSexo;
+	}
+
+	public void setSiglaSexo(String siglaSexo) {
+		this.siglaSexo = siglaSexo;
+	}
+
+	public String getUfNascimento() {
+		return ufNascimento;
+	}
+
+	public void setUfNascimento(String ufNascimento) {
+		this.ufNascimento = ufNascimento;
+	}
+
+	public List<Deputado> getListaResultadoBusca() {
+		return listaResultadoBusca;
+	}
+
+	public void setListaResultadoBusca(List<Deputado> listaResultadoBusca) {
+		this.listaResultadoBusca = listaResultadoBusca;
+	}
+	
+	//
+	
+	public List<String> getUf() {
+		DeputadoRN depRN = new DeputadoRN();
+		return depRN.listarUF();
+	}
+	
+	public List<Deputado> busca() {
+		return this.listar();
+	}
+	
+	/**
+	 * Método que lista todos os deputados cadastrados.
+	 * 
+	 * @return Todos os deputados cadastrados.
+	 */
+	public List<Deputado> listar() {
+		DeputadoRN depRN = new DeputadoRN();
+		this.listaResultadoBusca = depRN.listar();
+		return depRN.listar();
 	}
 
 }

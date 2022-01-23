@@ -81,4 +81,12 @@ public class DeputadoDAOHibernate implements DeputadoDAO {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> listarUF() {
+		String hql = "select distinct d.ufNascimento from Deputado as d";
+        Query consulta = this.session.createQuery(hql);
+        return consulta.list();
+	}
+
 }
