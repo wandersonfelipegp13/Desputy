@@ -199,10 +199,12 @@ public class DeputadoBean {
 		this.listaResultadoBusca = this.listar();
 		List<Deputado> aux = new ArrayList<Deputado>();
 
+		this.nome = this.nome.toLowerCase();
+		
 		// Se todos os filtros forem passados
 		if (!this.nome.isEmpty() && !this.ufNascimento.isEmpty() && !this.siglaSexo.isEmpty()) {
 			for (Deputado d : listaResultadoBusca)
-				if (d.getNome().equals(this.nome) && d.getSiglaSexo().equals(this.siglaSexo)
+				if (d.getNome().toLowerCase().contains(this.nome) && d.getSiglaSexo().equals(this.siglaSexo)
 						&& d.getUfNascimento().equals(this.ufNascimento))
 					aux.add(d);
 			listaResultadoBusca = aux;
@@ -211,7 +213,7 @@ public class DeputadoBean {
 		// Se a sigla do sexo não for passada
 		if (!this.nome.isEmpty() && !this.ufNascimento.isEmpty() && this.siglaSexo.isEmpty()) {
 			for (Deputado d : listaResultadoBusca)
-				if (d.getNome().equals(this.nome) && d.getUfNascimento().equals(this.ufNascimento))
+				if (d.getNome().toLowerCase().contains(this.nome) && d.getUfNascimento().equals(this.ufNascimento))
 					aux.add(d);
 			listaResultadoBusca = aux;
 		}
@@ -219,7 +221,7 @@ public class DeputadoBean {
 		// Se o UF de nascimento não for passado
 		if (!this.nome.isEmpty() && this.ufNascimento.isEmpty() && !this.siglaSexo.isEmpty()) {
 			for (Deputado d : listaResultadoBusca)
-				if (d.getNome().equals(this.nome) && d.getSiglaSexo().equals(this.siglaSexo))
+				if (d.getNome().toLowerCase().contains(this.nome) && d.getSiglaSexo().equals(this.siglaSexo))
 					aux.add(d);
 			listaResultadoBusca = aux;
 		}
@@ -235,7 +237,7 @@ public class DeputadoBean {
 		// Se o sexo e o UF não forem passados
 		if (!this.nome.isEmpty() && this.ufNascimento.isEmpty() && this.siglaSexo.isEmpty()) {
 			for (Deputado d : listaResultadoBusca)
-				if (d.getNome().equals(this.nome))
+				if (d.getNome().toLowerCase().contains(this.nome))
 					aux.add(d);
 			listaResultadoBusca = aux;
 		}
