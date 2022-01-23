@@ -6,7 +6,8 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
 <ui:composition template="/templates/externa.xhtml">
 	<ui:define name="corpo">
-		Bem vindo(a) #{request.remoteUser}
+	
+		<h3>Bem vindo(a) #{request.remoteUser}</h3>
 		
 		<div style="display: flex;">
 			<p:chart type="bar" model="#{deputadoBean.deputadoColunas}"
@@ -19,10 +20,10 @@
 
 			<h:outputLabel value="Nome: " for="nome" />
 			<h:inputText id="nome" value="#{deputadoBean.nome}" maxlength="45"
-				style="width: 50%;" />
+				style="width: 100%; margin-bottom: 10px;" />
 
 			<p:selectOneMenu id="uf" value="#{deputadoBean.ufNascimento}"
-				style="width: 50%;">
+				style="width: 100%;">
 				<f:selectItem itemLabel="Selecione um estado" itemValue="" />
 				<f:selectItems value="#{deputadoBean.uf}" var="a" itemLabel="#{a}"
 					itemValue="#{a}" />
@@ -39,7 +40,7 @@
 
 		</h:form>
 
-		<h:dataTable value="#{deputadoBean.listaResultadoBusca}" var="deputado">
+		<h:dataTable value="#{deputadoBean.listaResultadoBusca}" var="deputado" style="margin-bottom: 10px;">
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{deputado.nome}">

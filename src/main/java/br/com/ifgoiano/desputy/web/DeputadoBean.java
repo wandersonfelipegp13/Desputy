@@ -190,8 +190,7 @@ public class DeputadoBean {
 	}
 
 	/**
-	 * Método para a busca, com filtros, de deputados. TODO Mudar equals por
-	 * contains em nome.
+	 * Método para a busca, com filtros, de deputados. 
 	 * 
 	 * @return Retorna uma lista de Deputado.
 	 */
