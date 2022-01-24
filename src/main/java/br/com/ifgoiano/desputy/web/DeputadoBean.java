@@ -283,7 +283,6 @@ public class DeputadoBean {
 	public int deputadosPorUf(String uf) {
 		for(EstadoDeputado d : deps) {
 			if(!d.getUfnascimento().equals("") && d.getUfnascimento().contains(uf)) {
-				System.out.println(d.getUfnascimento());
 				return d.getDeputados();
 			}
 		}

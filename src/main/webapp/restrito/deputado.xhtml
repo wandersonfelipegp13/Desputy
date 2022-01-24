@@ -76,7 +76,7 @@
 		</h:form>
 		<h:form id="listagem">
 			<h:dataTable value="#{deputadoBean.lista}" var="deputado"
-				rendered="#{not empty deputadoBean.lista}">
+				rendered="#{not empty deputadoBean.lista}" cellpadding="10px">
 				<h:column>
 					<f:facet name="header">Nome</f:facet>
 					#{deputado.nome}
@@ -88,38 +88,6 @@
 				<h:column>
 					<f:facet name="header">CPF</f:facet>
 					#{deputado.cpf}
-				</h:column>
-				<h:column>
-					<f:facet name="header">URI</f:facet>
-					#{deputado.uri}
-				</h:column>
-				<h:column>
-					<f:facet name="header">Data Nascimento</f:facet>
-					#{deputado.dataNascimento}
-				</h:column>
-				<h:column>
-					<f:facet name="header">Data Falecimento</f:facet>
-					#{deputado.dataFalecimento}
-				</h:column>
-				<h:column>
-					<f:facet name="header">ID Legislatura Inicial</f:facet>
-					#{deputado.idLegislaturaInicial}
-				</h:column>
-				<h:column>
-					<f:facet name="header">ID Legislatura Final</f:facet>
-					#{deputado.idLegislaturaFinal}
-				</h:column>
-				<h:column>
-					<f:facet name="header">UF Nascimento</f:facet>
-					#{deputado.ufNascimento}
-				</h:column>
-				<h:column>
-					<f:facet name="header">Município Nascimento</f:facet>
-					#{deputado.municipioNascimento}
-				</h:column>
-				<h:column>
-					<f:facet name="header">Sexo</f:facet>
-					#{deputado.siglaSexo}
 				</h:column>
 				<h:column>
 					<h:commandLink>

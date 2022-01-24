@@ -8,40 +8,53 @@
 	<ui:define name="corpo">
 
 		<h2>Bem vindo(a) #{request.remoteUser}</h2>
+		<br/>
 
-		<div style="display: flex;">
+		<div style="display: flex; text-align: center; justify-content: center;">
 			<p:chart type="bar" model="#{deputadoBean.deputadoColunas}"
 				style="width:45%;height:300px" />
 			<p:chart type="pie" model="#{deputadoBean.deputadosPizza}"
 				style="width:45%;height:300px" />
 		</div>
-
-		<h:form>
-
+		<br/><br/>
+		
+		<h:form style="border: 1px solid #EF474F; padding: 1.5em 1.5em; border-radius: 10px;">
+			
+			<h2>Buscar deputado</h2><br/><br/>
+			
 			<h:outputLabel value="Nome: " for="nome" />
 			<h:inputText id="nome" value="#{deputadoBean.nome}" maxlength="45"
-				style="width: 100%; margin-bottom: 10px;" />
-
+				style="width: 100%; margin-bottom: 10px; height: 30px; padding: 0 10px;" />
+			<br/>
+			
 			<p:selectOneMenu id="uf" value="#{deputadoBean.ufNascimento}"
-				style="width: 100%;">
+				style="width: 100%; height: 30px;">
 				<f:selectItem itemLabel="Selecione um estado" itemValue="" />
 				<f:selectItems value="#{deputadoBean.uf}" var="a" itemLabel="#{a}"
 					itemValue="#{a}" />
 			</p:selectOneMenu>
+			<br/><br/>
 
 			<p:selectOneRadio id="sexo" value="#{deputadoBean.siglaSexo}">
 				<f:selectItem itemValue="" itemLabel="Ambos" />
 				<f:selectItem itemValue="M" itemLabel="Masculino" />
 				<f:selectItem itemValue="F" itemLabel="Feminino" />
 			</p:selectOneRadio>
+			<br/><br/>
 
 			<h:commandButton value="Buscar Deputados"
-				action="#{deputadoBean.busca()}" />
+				action="#{deputadoBean.busca()}" style="
+					color: #fff; 
+					background: #EF474F;
+					padding: 10px;
+					font-size: 18px;
+					border-radius: 10px;"/>
 
 		</h:form>
-
+		<br/><br/>
+		
 		<h:dataTable value="#{deputadoBean.listaResultadoBusca}"
-			var="deputado" style="margin-bottom: 10px;">
+			var="deputado" style="margin-bottom: 10px; width: 100%;">
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{deputado.nome}">
@@ -53,15 +66,20 @@
 				</h:outputText>
 			</h:column>
 		</h:dataTable>
+		<br/><br/>
 		
 		<h:form>
-			<h:commandButton value="Acesse o mapa de UFs." action="/restrito/mapa" />
+			<h:commandButton value="Acesse o mapa de UFs" action="/restrito/mapa" style="
+			font-size: 16px; 
+			cursor: pointer;
+			color: #fff; 
+			background: #EF474F;
+			padding: 10px;
+			font-size: 18px;
+			border-radius: 10px;"/>
 		</h:form>
 		<br/><br/>
-		<h:form>
-			<h:commandButton value="Popular." action="#{deputadoBean.insereDados()}" />
-		</h:form>
-
+		
 	</ui:define>
 </ui:composition>
 </html>

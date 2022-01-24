@@ -12,8 +12,8 @@
 			Motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}
 		</h:panelGroup>
 		<form id="login" method="post"
-			action="#{request.contextPath}/j_spring_security_check">
-			<table>
+			action="#{request.contextPath}/j_spring_security_check" style="justify-content: center; text-align: center;">
+			<table style="margin: auto;">
 				<tr>
 					<td>Login</td>
 					<td><input type='text' name='j_username' /></td>
@@ -28,8 +28,15 @@
 					<td>Entrar automaticamente</td>
 				</tr>
 				<tr>
+					
 					<td></td>
-					<td><input type="submit" value="Entrar" /></td>
+					<td><input type="submit" value="Entrar" style="
+					color: #fff; 
+					background: #EF474F;
+					padding: 5px;
+					font-size: 16px;
+					font-weight: bold;
+					border-radius: 10px;"/></td>
 				</tr>
 			</table>
 			<script>
@@ -37,8 +44,9 @@
 		</script>
 		</form>
 		
-		<h:form>
-			<h:commandLink action="#{usuarioBean.novo}">Ainda não tenho uma conta.</h:commandLink>
+		<br/>
+		<h:form style="text-align: center; justify-content: center;">
+			<h:commandLink action="#{usuarioBean.novo}" style="text-align: center;">Ainda não tenho uma conta.</h:commandLink>
 		</h:form>
 	
 	</ui:define>

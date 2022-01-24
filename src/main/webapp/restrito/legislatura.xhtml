@@ -23,20 +23,7 @@
 				<h:inputText id="datainicio"
 					value="#{legislaturaBean.selecionada.dataInicio}" required="true" size="10" maxlength="10">
 					<f:convertDateTime dateStyle="medium" pattern="dd/mm/yyyy" /> 
-				</h:inputText>	
-				
-				<!--  
-				<h:outputLabel value="Data de Início " for="datainicio" />
-				<h:inputText id="datainicio"
-					value="#{legislaturaBean.selecionada.dataInicio}" required="true"
-					maxlength="45" />
-				
-				
-				<h:outputLabel value="Data de Fim: " for="datafim" />
-				<h:inputText id="datafim"
-					value="#{legislaturaBean.selecionada.dataFim}" required="true"
-					maxlength="45" />
-				-->
+				</h:inputText>
 				
 				<h:outputLabel value="Data de Fim: " for="datafim" />
 				<h:inputText id="datafim"
@@ -57,7 +44,7 @@
 		</h:form>
 		<h:form id="listagem">
 			<h:dataTable value="#{legislaturaBean.lista}" var="legislatura"
-				rendered="#{not empty legislaturaBean.lista}">
+				rendered="#{not empty legislaturaBean.lista}" cellpadding="10px">
 				<h:column>
 					<f:facet name="header">URI</f:facet>
 					#{legislatura.uri}
